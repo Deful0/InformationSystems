@@ -41,5 +41,68 @@ namespace InformationSystems
 
             this.Close();
         }
+
+        private void button_delet_Click(object sender, EventArgs e)
+        {
+            // Проверяем, выбрана ли строка в DataGridView
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Пожалуйста, выберите запись для удаления.", "Внимание",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Получаем ID штрафа (предполагаем, что первая колонка - fine_id)
+            int fineId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+
+            // Запрашиваем подтверждение
+            DialogResult result = MessageBox.Show($"Вы действительно хотите удалить штраф №{fineId}?\n\nЭто действие нельзя отменить!",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // Находим запись в DataSet
+                    var fine = this.dBDataSet.fins.FindByfine_id(fineId);
+
+                    if (fine != null)
+                    {
+                        // Удаляем запись
+                        fine.Delete();
+
+                        // Сохраняем изменения в базу
+                        this.finsTableAdapter.Update(this.dBDataSet.fins);
+
+                        // Обновляем DataGridView
+                        this.finsTableAdapter.Fill(this.dBDataSet.fins);
+
+                        MessageBox.Show("Штраф успешно удален!", "Успех",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Запись не найдена!", "Ошибка",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Обработка ошибки внешнего ключа
+                    if (ex.Message.Contains("foreign key") || ex.Message.Contains("REFERENCES"))
+                    {
+                        MessageBox.Show("Невозможно удалить запись, так как она связана с другими данными!",
+                            "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Ошибка при удалении: {ex.Message}", "Ошибка",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

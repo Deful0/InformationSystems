@@ -31,24 +31,25 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.finsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBDataSet = new InformationSystems.DBDataSet();
-            this.finsTableAdapter = new InformationSystems.DBDataSetTableAdapters.finsTableAdapter();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new InformationSystems.DBDataSetTableAdapters.usersTableAdapter();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.booksTableAdapter = new InformationSystems.DBDataSetTableAdapters.booksTableAdapter();
             this.fineidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dBDataSet = new InformationSystems.DBDataSet();
             this.bookidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fineamountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finecommentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finepaydateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.finsTableAdapter = new InformationSystems.DBDataSetTableAdapters.finsTableAdapter();
+            this.usersTableAdapter = new InformationSystems.DBDataSetTableAdapters.usersTableAdapter();
+            this.booksTableAdapter = new InformationSystems.DBDataSetTableAdapters.booksTableAdapter();
+            this.button_delet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.finsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.finsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -78,38 +79,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(776, 352);
             this.dataGridView1.TabIndex = 1;
             // 
-            // finsBindingSource
-            // 
-            this.finsBindingSource.DataMember = "fins";
-            this.finsBindingSource.DataSource = this.dBDataSet;
-            // 
-            // dBDataSet
-            // 
-            this.dBDataSet.DataSetName = "DBDataSet";
-            this.dBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // finsTableAdapter
-            // 
-            this.finsTableAdapter.ClearBeforeFill = true;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "users";
-            this.usersBindingSource.DataSource = this.dBDataSet;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
-            // 
-            // booksBindingSource
-            // 
-            this.booksBindingSource.DataMember = "books";
-            this.booksBindingSource.DataSource = this.dBDataSet;
-            // 
-            // booksTableAdapter
-            // 
-            this.booksTableAdapter.ClearBeforeFill = true;
-            // 
             // fineidDataGridViewTextBoxColumn
             // 
             this.fineidDataGridViewTextBoxColumn.DataPropertyName = "fine_id";
@@ -127,6 +96,16 @@
             this.useridDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.useridDataGridViewTextBoxColumn.ValueMember = "user_id";
             // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.dBDataSet;
+            // 
+            // dBDataSet
+            // 
+            this.dBDataSet.DataSetName = "DBDataSet";
+            this.dBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // bookidDataGridViewTextBoxColumn
             // 
             this.bookidDataGridViewTextBoxColumn.DataPropertyName = "book_id";
@@ -137,6 +116,11 @@
             this.bookidDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.bookidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.bookidDataGridViewTextBoxColumn.ValueMember = "book_id";
+            // 
+            // booksBindingSource
+            // 
+            this.booksBindingSource.DataMember = "books";
+            this.booksBindingSource.DataSource = this.dBDataSet;
             // 
             // fineamountDataGridViewTextBoxColumn
             // 
@@ -156,11 +140,39 @@
             this.finepaydateDataGridViewTextBoxColumn.HeaderText = "fine_pay_date";
             this.finepaydateDataGridViewTextBoxColumn.Name = "finepaydateDataGridViewTextBoxColumn";
             // 
+            // finsBindingSource
+            // 
+            this.finsBindingSource.DataMember = "fins";
+            this.finsBindingSource.DataSource = this.dBDataSet;
+            // 
+            // finsTableAdapter
+            // 
+            this.finsTableAdapter.ClearBeforeFill = true;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // booksTableAdapter
+            // 
+            this.booksTableAdapter.ClearBeforeFill = true;
+            // 
+            // button_delet
+            // 
+            this.button_delet.Location = new System.Drawing.Point(446, 12);
+            this.button_delet.Name = "button_delet";
+            this.button_delet.Size = new System.Drawing.Size(168, 45);
+            this.button_delet.TabIndex = 2;
+            this.button_delet.Text = "Удалить запись";
+            this.button_delet.UseVisualStyleBackColor = true;
+            this.button_delet.Click += new System.EventHandler(this.button_delet_Click);
+            // 
             // formFins
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_delet);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Name = "formFins";
@@ -168,10 +180,10 @@
             this.Text = "formFins";
             this.Load += new System.EventHandler(this.formFins_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.finsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.finsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -193,5 +205,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fineamountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn finecommentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn finepaydateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button_delet;
     }
 }
