@@ -24,10 +24,13 @@ property name - имя свойства класса, на которое ото
 		</id>
 		<property name="vip_user_name"/>
 		<property name="vip_user_date_start"/>
+
+		<!-- Связь с User (many-to-one) -->
 		<many-to-one name="user_id" column="user_id" cascade="merge" unique="true"/>
-		<bag name="requests" table="Request" cascade="all-delete-orphan" lazy="true" inverse="false">
-			<key column="user_id" />
-		<one-to-many class="Request" />
+
+		<bag name="requests" cascade="all-delete-orphan" inverse="true">
+			<key column="vip_user_id" />
+			<one-to-many class="Request" />
 		</bag>
 	</class>
 </hibernate-mapping>

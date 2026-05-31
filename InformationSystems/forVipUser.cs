@@ -75,18 +75,29 @@ namespace InformationSystems
 
         private void tsb_change_Click(object sender, EventArgs e)
         {
-            VipUser vip_user = MyUtilitis.Clone<VipUser>((VipUser)this.vipUserBindingSource.Current);
-            VipUserFormUnit vip_users_form_unit = new VipUserFormUnit();
-            vip_users_form_unit.SetDataSource(vip_user);
-            if (vip_users_form_unit.ShowDialog() == DialogResult.OK)
+            try
             {
-                // Сохранение изменений
-                nhibernate_session.Merge(vip_user);
-                // Внесение в базу
-                nhibernate_session.Flush();
+                VipUser vip_user = MyUtilitis.Clone<VipUser>((VipUser)this.vipUserBindingSource.Current);
+                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit();
+                vip_users_form_unit.SetDataSource(vip_user);
 
-                // Обновление данных
-                UpdateVipUserGrid();
+                if (vip_users_form_unit.ShowDialog() == DialogResult.OK)
+                {
+                    using (var transaction = nhibernate_session.BeginTransaction())
+                    {
+                        // Сохраняем VipUser (каскадно сохранятся и Request)
+                        nhibernate_session.Merge(vip_user);
+                        nhibernate_session.Flush();
+                        transaction.Commit();
+                    }
+
+                    UpdateVipUserGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
