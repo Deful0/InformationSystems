@@ -147,21 +147,6 @@ namespace InformationSystems
 
         private void salarysBindingSource_AddingNew(object sender, AddingNewEventArgs e)
         {
-            // Автоматическая подстановка Работника в Таблицу
-            // Создаем новый объект DataRowView
-            // Получаем ID текущего выбранного сотрудника
-            int currentWorkerId = GetCurrentWorkerID();
-            if (currentWorkerId == -1)
-            {
-                MessageBox.Show("Сначала выберите сотрудника в списке выше.", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Получаем новую строку из источника данных
-            DataRowView newRow = (DataRowView)this.salarysBindingSource.AddNew();
-            // Устанавливаем worker_id
-            newRow["worker_id"] = currentWorkerId;
         }
 
         private void bindingNavigatorAddNewItem1_Click(object sender, EventArgs e)

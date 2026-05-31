@@ -22,16 +22,16 @@ namespace InformationSystems
             try
             {
                 // Создаем новую строку напрямую в DataTable
-                DataRow newRow = this.dBDataSet.salarys.NewRow();
+                DataTable salarysTable = this.dBDataSet.salarys;
+                DataRow newRow = salarysTable.NewRow();
                 newRow["worker_id"] = WorkerID;
                 newRow["salary_amount"] = 0;
                 newRow["date_pay"] = DateTime.Now;
 
-                // Добавляем в таблицу
-                this.dBDataSet.salarys.Rows.Add(newRow);
+                salarysTable.Rows.Add(newRow);
 
                 // Обновляем BindingSource
-                this.SalarysBindingSource.DataSource = this.dBDataSet.salarys;
+                this.SalarysBindingSource.DataSource = salarysTable;
                 this.SalarysBindingSource.Position = this.SalarysBindingSource.Count - 1;
             }
             catch (Exception ex)

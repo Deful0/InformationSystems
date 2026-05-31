@@ -34,12 +34,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_id = new System.Windows.Forms.TextBox();
+            this.SalarysBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dBDataSet = new InformationSystems.DBDataSet();
             this.tb_wid = new System.Windows.Forms.TextBox();
             this.tb_salary = new System.Windows.Forms.TextBox();
             this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
-            this.SalarysBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBDataSet = new InformationSystems.DBDataSet();
             this.salarysTableAdapter = new InformationSystems.DBDataSetTableAdapters.salarysTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.SalarysBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBDataSet)).BeginInit();
@@ -86,14 +86,26 @@
             this.tb_id.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.SalarysBindingSource, "salary_id", true));
             this.tb_id.Location = new System.Drawing.Point(205, 30);
             this.tb_id.Name = "tb_id";
+            this.tb_id.ReadOnly = true;
             this.tb_id.Size = new System.Drawing.Size(100, 20);
             this.tb_id.TabIndex = 5;
+            // 
+            // SalarysBindingSource
+            // 
+            this.SalarysBindingSource.DataMember = "salarys";
+            this.SalarysBindingSource.DataSource = this.dBDataSet;
+            // 
+            // dBDataSet
+            // 
+            this.dBDataSet.DataSetName = "DBDataSet";
+            this.dBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tb_wid
             // 
             this.tb_wid.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.SalarysBindingSource, "worker_id", true));
             this.tb_wid.Location = new System.Drawing.Point(205, 76);
             this.tb_wid.Name = "tb_wid";
+            this.tb_wid.ReadOnly = true;
             this.tb_wid.Size = new System.Drawing.Size(100, 20);
             this.tb_wid.TabIndex = 6;
             // 
@@ -125,16 +137,6 @@
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // SalarysBindingSource
-            // 
-            this.SalarysBindingSource.DataMember = "salarys";
-            this.SalarysBindingSource.DataSource = this.dBDataSet;
-            // 
-            // dBDataSet
-            // 
-            this.dBDataSet.DataSetName = "DBDataSet";
-            this.dBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // salarysTableAdapter
             // 
