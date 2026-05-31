@@ -34,14 +34,26 @@ namespace InformationSystems
             {
                 if (nhibernate_session != null)
                 {
-                    // Загружаем ТОЛЬКО обычные книги, исключая ретро-книги
-                    // Используем HQL для явного указания типа
-                    books = nhibernate_session.CreateQuery("from Book b where b.book_exist = true")
+                    // ✅ SQL запрос, который работает независимо от joined-subclass
+                    string sql = @"
+                SELECT 
+                    book_id, 
+                    book_name, 
+                    book_author, 
+                    book_date, 
+                    book_count_list, 
+                    book_exist 
+                FROM books 
+                WHERE book_exist = true";
+
+                    books = nhibernate_session.CreateSQLQuery(sql)
+                        .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean<Book>())
                         .List<Book>();
 
                     comboBoxBook.DataSource = books;
                     comboBoxBook.DisplayMember = "book_name";
                     comboBoxBook.ValueMember = "book_id";
+                    comboBoxBook.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
             }
             catch (Exception ex)
@@ -54,17 +66,16 @@ namespace InformationSystems
         {
             this.requestBindingSource.DataSource = request;
 
-            // Если это новая запись (ID = 0), показываем "Новый" в поле ID
+            // Привязываем SelectedValue к book_id
+            if (comboBoxBook.DataBindings.Count == 0)
+            {
+                comboBoxBook.DataBindings.Add("SelectedValue", requestBindingSource, "book_id", true, DataSourceUpdateMode.OnPropertyChanged);
+            }
+
             if (request.request_id == 0)
             {
                 textBox1.Text = "(Новый)";
                 textBox1.Enabled = false;
-            }
-
-            // Устанавливаем выбранную книгу в ComboBox
-            if (request.book_id > 0 && books != null)
-            {
-                comboBoxBook.SelectedValue = request.book_id;
             }
         }
 

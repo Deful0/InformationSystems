@@ -3915,9 +3915,17 @@ namespace InformationSystems {
             
             private global::System.Data.DataColumn columnbook_id;
             
-            private global::System.Data.DataColumn columnretro_book_name;
-            
             private global::System.Data.DataColumn columnretro_book_price;
+            
+            private global::System.Data.DataColumn columnbook_name;
+            
+            private global::System.Data.DataColumn columnbook_author;
+            
+            private global::System.Data.DataColumn columnbook_date;
+            
+            private global::System.Data.DataColumn columnbook_count_list;
+            
+            private global::System.Data.DataColumn columnbook_exist;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
@@ -3962,17 +3970,49 @@ namespace InformationSystems {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn retro_book_nameColumn {
+            public global::System.Data.DataColumn retro_book_priceColumn {
                 get {
-                    return this.columnretro_book_name;
+                    return this.columnretro_book_price;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn retro_book_priceColumn {
+            public global::System.Data.DataColumn book_nameColumn {
                 get {
-                    return this.columnretro_book_price;
+                    return this.columnbook_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn book_authorColumn {
+                get {
+                    return this.columnbook_author;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn book_dateColumn {
+                get {
+                    return this.columnbook_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn book_count_listColumn {
+                get {
+                    return this.columnbook_count_list;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public global::System.Data.DataColumn book_existColumn {
+                get {
+                    return this.columnbook_exist;
                 }
             }
             
@@ -4013,12 +4053,16 @@ namespace InformationSystems {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public retro_booksRow Addretro_booksRow(booksRow parentbooksRowBybooksretro_books, string retro_book_name, int retro_book_price) {
+            public retro_booksRow Addretro_booksRow(booksRow parentbooksRowBybooksretro_books, int retro_book_price, string book_name, string book_author, System.DateTime book_date, int book_count_list, bool book_exist) {
                 retro_booksRow rowretro_booksRow = ((retro_booksRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        retro_book_name,
-                        retro_book_price};
+                        retro_book_price,
+                        book_name,
+                        book_author,
+                        book_date,
+                        book_count_list,
+                        book_exist};
                 if ((parentbooksRowBybooksretro_books != null)) {
                     columnValuesArray[0] = parentbooksRowBybooksretro_books[0];
                 }
@@ -4052,8 +4096,12 @@ namespace InformationSystems {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal void InitVars() {
                 this.columnbook_id = base.Columns["book_id"];
-                this.columnretro_book_name = base.Columns["retro_book_name"];
                 this.columnretro_book_price = base.Columns["retro_book_price"];
+                this.columnbook_name = base.Columns["book_name"];
+                this.columnbook_author = base.Columns["book_author"];
+                this.columnbook_date = base.Columns["book_date"];
+                this.columnbook_count_list = base.Columns["book_count_list"];
+                this.columnbook_exist = base.Columns["book_exist"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4061,15 +4109,24 @@ namespace InformationSystems {
             private void InitClass() {
                 this.columnbook_id = new global::System.Data.DataColumn("book_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbook_id);
-                this.columnretro_book_name = new global::System.Data.DataColumn("retro_book_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnretro_book_name);
                 this.columnretro_book_price = new global::System.Data.DataColumn("retro_book_price", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnretro_book_price);
+                this.columnbook_name = new global::System.Data.DataColumn("book_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbook_name);
+                this.columnbook_author = new global::System.Data.DataColumn("book_author", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbook_author);
+                this.columnbook_date = new global::System.Data.DataColumn("book_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbook_date);
+                this.columnbook_count_list = new global::System.Data.DataColumn("book_count_list", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbook_count_list);
+                this.columnbook_exist = new global::System.Data.DataColumn("book_exist", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbook_exist);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnbook_id}, true));
                 this.columnbook_id.AllowDBNull = false;
                 this.columnbook_id.Unique = true;
-                this.columnretro_book_name.MaxLength = 255;
+                this.columnbook_name.MaxLength = 536870910;
+                this.columnbook_author.MaxLength = 536870910;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5828,22 +5885,6 @@ namespace InformationSystems {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public string retro_book_name {
-                get {
-                    try {
-                        return ((string)(this[this.tableretro_books.retro_book_nameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'retro_book_name\' в таблице \'retro_books\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableretro_books.retro_book_nameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public int retro_book_price {
                 get {
                     try {
@@ -5860,6 +5901,86 @@ namespace InformationSystems {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public string book_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableretro_books.book_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'book_name\' в таблице \'retro_books\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableretro_books.book_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public string book_author {
+                get {
+                    try {
+                        return ((string)(this[this.tableretro_books.book_authorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'book_author\' в таблице \'retro_books\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableretro_books.book_authorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public System.DateTime book_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableretro_books.book_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'book_date\' в таблице \'retro_books\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableretro_books.book_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public int book_count_list {
+                get {
+                    try {
+                        return ((int)(this[this.tableretro_books.book_count_listColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'book_count_list\' в таблице \'retro_books\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableretro_books.book_count_listColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool book_exist {
+                get {
+                    try {
+                        return ((bool)(this[this.tableretro_books.book_existColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'book_exist\' в таблице \'retro_books\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableretro_books.book_existColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public booksRow booksRow {
                 get {
                     return ((booksRow)(this.GetParentRow(this.Table.ParentRelations["booksretro_books"])));
@@ -5867,18 +5988,6 @@ namespace InformationSystems {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["booksretro_books"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool Isretro_book_nameNull() {
-                return this.IsNull(this.tableretro_books.retro_book_nameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void Setretro_book_nameNull() {
-                this[this.tableretro_books.retro_book_nameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5891,6 +6000,66 @@ namespace InformationSystems {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public void Setretro_book_priceNull() {
                 this[this.tableretro_books.retro_book_priceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool Isbook_nameNull() {
+                return this.IsNull(this.tableretro_books.book_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void Setbook_nameNull() {
+                this[this.tableretro_books.book_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool Isbook_authorNull() {
+                return this.IsNull(this.tableretro_books.book_authorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void Setbook_authorNull() {
+                this[this.tableretro_books.book_authorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool Isbook_dateNull() {
+                return this.IsNull(this.tableretro_books.book_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void Setbook_dateNull() {
+                this[this.tableretro_books.book_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool Isbook_count_listNull() {
+                return this.IsNull(this.tableretro_books.book_count_listColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void Setbook_count_listNull() {
+                this[this.tableretro_books.book_count_listColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public bool Isbook_existNull() {
+                return this.IsNull(this.tableretro_books.book_existColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+            public void Setbook_existNull() {
+                this[this.tableretro_books.book_existColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10369,43 +10538,58 @@ namespace InformationSystems.DBDataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "retro_books";
             tableMapping.ColumnMappings.Add("book_id", "book_id");
-            tableMapping.ColumnMappings.Add("retro_book_name", "retro_book_name");
             tableMapping.ColumnMappings.Add("retro_book_price", "retro_book_price");
+            tableMapping.ColumnMappings.Add("book_name", "book_name");
+            tableMapping.ColumnMappings.Add("book_author", "book_author");
+            tableMapping.ColumnMappings.Add("book_date", "book_date");
+            tableMapping.ColumnMappings.Add("book_count_list", "book_count_list");
+            tableMapping.ColumnMappings.Add("book_exist", "book_exist");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `retro_books` WHERE ((`book_id` = ?) AND ((? = 1 AND `retro_book_name" +
-                "` IS NULL) OR (`retro_book_name` = ?)) AND ((? = 1 AND `retro_book_price` IS NUL" +
-                "L) OR (`retro_book_price` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `retro_books` WHERE ((`book_id` = ?) AND ((? = 1 AND `retro_book_price` IS NULL) OR (`retro_book_price` = ?)) AND ((? = 1 AND `book_count_list` IS NULL) OR (`book_count_list` = ?)) AND ((? = 1 AND `book_date` IS NULL) OR (`book_date` = ?)) AND ((? = 1 AND `book_exist` IS NULL) OR (`book_exist` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_book_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_id", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_retro_book_name", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_name", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_retro_book_name", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_name", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_retro_book_price", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_price", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_retro_book_price", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_price", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_book_count_list", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_count_list", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_book_count_list", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_count_list", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_book_date", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_date", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_book_date", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_date", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_book_exist", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_exist", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_book_exist", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_exist", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO `retro_books` (`book_id`, `retro_book_name`, `retro_book_price`) VALU" +
-                "ES (?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `retro_books` (`book_id`, `retro_book_price`, `book_author`, `book_co" +
+                "unt_list`, `book_date`, `book_exist`, `book_name`) VALUES (?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_id", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("retro_book_name", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_name", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("retro_book_price", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_price", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_author", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_author", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_count_list", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_count_list", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_date", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_date", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_exist", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_exist", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_name", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_name", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE `retro_books` SET `book_id` = ?, `retro_book_name` = ?, `retro_book_price`" +
-                " = ? WHERE ((`book_id` = ?) AND ((? = 1 AND `retro_book_name` IS NULL) OR (`retr" +
-                "o_book_name` = ?)) AND ((? = 1 AND `retro_book_price` IS NULL) OR (`retro_book_p" +
-                "rice` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `retro_books` SET `book_id` = ?, `retro_book_price` = ?, `book_author` = ?, `book_count_list` = ?, `book_date` = ?, `book_exist` = ?, `book_name` = ? WHERE ((`book_id` = ?) AND ((? = 1 AND `retro_book_price` IS NULL) OR (`retro_book_price` = ?)) AND ((? = 1 AND `book_count_list` IS NULL) OR (`book_count_list` = ?)) AND ((? = 1 AND `book_date` IS NULL) OR (`book_date` = ?)) AND ((? = 1 AND `book_exist` IS NULL) OR (`book_exist` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_id", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("retro_book_name", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_name", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("retro_book_price", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_price", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_author", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_author", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_count_list", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_count_list", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_date", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_date", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_exist", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_exist", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("book_name", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_name", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_book_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_id", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_retro_book_name", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_name", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_retro_book_name", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_name", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_retro_book_price", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_price", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_retro_book_price", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "retro_book_price", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_book_count_list", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_count_list", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_book_count_list", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_count_list", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_book_date", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_date", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_book_date", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_date", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_book_exist", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_exist", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_book_exist", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "book_exist", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10421,7 +10605,8 @@ namespace InformationSystems.DBDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT book_id, retro_book_name, retro_book_price FROM retro_books";
+            this._commandCollection[0].CommandText = "SELECT book_id, retro_book_price, book_author, book_count_list, book_date, book_e" +
+                "xist, book_name FROM retro_books";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -10482,24 +10667,34 @@ namespace InformationSystems.DBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_book_id, string Original_retro_book_name, global::System.Nullable<int> Original_retro_book_price) {
+        public virtual int Delete(int Original_book_id, global::System.Nullable<int> Original_retro_book_price, global::System.Nullable<int> Original_book_count_list, global::System.Nullable<global::System.DateTime> Original_book_date, bool Original_book_exist) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_book_id));
-            if ((Original_retro_book_name == null)) {
+            if ((Original_retro_book_price.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_retro_book_price.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_retro_book_name));
-            }
-            if ((Original_retro_book_price.HasValue == true)) {
+            if ((Original_book_count_list.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_retro_book_price.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_book_count_list.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
+            if ((Original_book_date.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_book_date.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((bool)(Original_book_exist));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10520,19 +10715,38 @@ namespace InformationSystems.DBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int book_id, string retro_book_name, global::System.Nullable<int> retro_book_price) {
+        public virtual int Insert(int book_id, global::System.Nullable<int> retro_book_price, string book_author, global::System.Nullable<int> book_count_list, global::System.Nullable<global::System.DateTime> book_date, bool book_exist, string book_name) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(book_id));
-            if ((retro_book_name == null)) {
+            if ((retro_book_price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(retro_book_price.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(retro_book_name));
-            }
-            if ((retro_book_price.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(retro_book_price.Value));
-            }
-            else {
+            if ((book_author == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(book_author));
+            }
+            if ((book_count_list.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(book_count_list.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((book_date.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(book_date.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(book_exist));
+            if ((book_name == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(book_name));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10554,37 +10768,66 @@ namespace InformationSystems.DBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int book_id, string retro_book_name, global::System.Nullable<int> retro_book_price, int Original_book_id, string Original_retro_book_name, global::System.Nullable<int> Original_retro_book_price) {
+        public virtual int Update(int book_id, global::System.Nullable<int> retro_book_price, string book_author, global::System.Nullable<int> book_count_list, global::System.Nullable<global::System.DateTime> book_date, bool book_exist, string book_name, int Original_book_id, global::System.Nullable<int> Original_retro_book_price, global::System.Nullable<int> Original_book_count_list, global::System.Nullable<global::System.DateTime> Original_book_date, bool Original_book_exist) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(book_id));
-            if ((retro_book_name == null)) {
+            if ((retro_book_price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(retro_book_price.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(retro_book_name));
-            }
-            if ((retro_book_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(retro_book_price.Value));
-            }
-            else {
+            if ((book_author == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_book_id));
-            if ((Original_retro_book_name == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(book_author));
+            }
+            if ((book_count_list.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(book_count_list.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_retro_book_name));
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
+            if ((book_date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(book_date.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(book_exist));
+            if ((book_name == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(book_name));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_book_id));
             if ((Original_retro_book_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_retro_book_price.Value));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_retro_book_price.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
+            if ((Original_book_count_list.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_book_count_list.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((Original_book_date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_book_date.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(Original_book_exist));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10605,8 +10848,8 @@ namespace InformationSystems.DBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string retro_book_name, global::System.Nullable<int> retro_book_price, int Original_book_id, string Original_retro_book_name, global::System.Nullable<int> Original_retro_book_price) {
-            return this.Update(Original_book_id, retro_book_name, retro_book_price, Original_book_id, Original_retro_book_name, Original_retro_book_price);
+        public virtual int Update(global::System.Nullable<int> retro_book_price, string book_author, global::System.Nullable<int> book_count_list, global::System.Nullable<global::System.DateTime> book_date, bool book_exist, string book_name, int Original_book_id, global::System.Nullable<int> Original_retro_book_price, global::System.Nullable<int> Original_book_count_list, global::System.Nullable<global::System.DateTime> Original_book_date, bool Original_book_exist) {
+            return this.Update(Original_book_id, retro_book_price, book_author, book_count_list, book_date, book_exist, book_name, Original_book_id, Original_retro_book_price, Original_book_count_list, Original_book_date, Original_book_exist);
         }
     }
     

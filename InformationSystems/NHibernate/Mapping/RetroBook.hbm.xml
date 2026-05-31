@@ -20,8 +20,6 @@ property name - имя свойства класса, на которое ото
                    namespace="InformationSystems.NHibernate.Entites">
 	<joined-subclass name="RetroBook" extends="Book" table="retro_books">
 		<key column="book_id" foreign-key="FK_retro_books_books"/>
-		<property name="retro_book_name"/>
 		<property name="retro_book_price"/>
 	</joined-subclass>
 </hibernate-mapping>
-

@@ -124,14 +124,11 @@
             // 
             // comboBoxBook
             // 
-            this.comboBoxBook.DataSource = this.bookBindingSource;
-            this.comboBoxBook.DisplayMember = "book_name";
             this.comboBoxBook.FormattingEnabled = true;
             this.comboBoxBook.Location = new System.Drawing.Point(161, 96);
             this.comboBoxBook.Name = "comboBoxBook";
             this.comboBoxBook.Size = new System.Drawing.Size(200, 21);
             this.comboBoxBook.TabIndex = 8;
-            this.comboBoxBook.ValueMember = "book_id";
             // 
             // bookBindingSource1
             // 
