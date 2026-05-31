@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace InformationSystems
 {
@@ -12,8 +13,14 @@ namespace InformationSystems
         // Создание копии объекта
         public static T Clone<T>(T source)
         {
-            var json = JsonSerializer.Serialize(source);
-            return JsonSerializer.Deserialize<T>(json);
+            var options = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = false
+            };
+
+            var json = JsonSerializer.Serialize(source, options);
+            return JsonSerializer.Deserialize<T>(json, options);
         }
     }
 }

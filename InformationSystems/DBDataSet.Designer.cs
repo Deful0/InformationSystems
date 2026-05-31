@@ -62,8 +62,6 @@ namespace InformationSystems {
         
         private global::System.Data.DataRelation relationbooksrequests;
         
-        private global::System.Data.DataRelation relationusersrequests;
-        
         private global::System.Data.DataRelation relationworkerssalarys;
         
         private global::System.Data.DataRelation relationusersvip_users;
@@ -468,7 +466,6 @@ namespace InformationSystems {
             this.relationusersrents = this.Relations["usersrents"];
             this.relationworkersrents = this.Relations["workersrents"];
             this.relationbooksrequests = this.Relations["booksrequests"];
-            this.relationusersrequests = this.Relations["usersrequests"];
             this.relationworkerssalarys = this.Relations["workerssalarys"];
             this.relationusersvip_users = this.Relations["usersvip_users"];
             this.relationvip_users_requests = this.Relations["vip_users_requests"];
@@ -537,10 +534,6 @@ namespace InformationSystems {
                         this.tablebooks.book_idColumn}, new global::System.Data.DataColumn[] {
                         this.tablerequests.book_idColumn}, false);
             this.Relations.Add(this.relationbooksrequests);
-            this.relationusersrequests = new global::System.Data.DataRelation("usersrequests", new global::System.Data.DataColumn[] {
-                        this.tableusers.user_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tablerequests.user_idColumn}, false);
-            this.Relations.Add(this.relationusersrequests);
             this.relationworkerssalarys = new global::System.Data.DataRelation("workerssalarys", new global::System.Data.DataColumn[] {
                         this.tableworkers.worker_idColumn}, new global::System.Data.DataColumn[] {
                         this.tablesalarys.worker_idColumn}, false);
@@ -2451,7 +2444,7 @@ namespace InformationSystems {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public requestsRow AddrequestsRow(booksRow parentbooksRowBybooksrequests, usersRow parentusersRowByusersrequests, System.DateTime request_date, int vip_user_id) {
+            public requestsRow AddrequestsRow(booksRow parentbooksRowBybooksrequests, vip_usersRow parentvip_usersRowByvip_users_requests, System.DateTime request_date, int vip_user_id) {
                 requestsRow rowrequestsRow = ((requestsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2462,8 +2455,8 @@ namespace InformationSystems {
                 if ((parentbooksRowBybooksrequests != null)) {
                     columnValuesArray[1] = parentbooksRowBybooksrequests[0];
                 }
-                if ((parentusersRowByusersrequests != null)) {
-                    columnValuesArray[2] = parentusersRowByusersrequests[0];
+                if ((parentvip_usersRowByvip_users_requests != null)) {
+                    columnValuesArray[2] = parentvip_usersRowByvip_users_requests[2];
                 }
                 rowrequestsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrequestsRow);
@@ -5155,17 +5148,6 @@ namespace InformationSystems {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public usersRow usersRow {
-                get {
-                    return ((usersRow)(this.GetParentRow(this.Table.ParentRelations["usersrequests"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["usersrequests"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public vip_usersRow vip_usersRow {
                 get {
                     return ((vip_usersRow)(this.GetParentRow(this.Table.ParentRelations["vip_users_requests"])));
@@ -5501,17 +5483,6 @@ namespace InformationSystems {
                 }
                 else {
                     return ((rentsRow[])(base.GetChildRows(this.Table.ChildRelations["usersrents"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public requestsRow[] GetrequestsRows() {
-                if ((this.Table.ChildRelations["usersrequests"] == null)) {
-                    return new requestsRow[0];
-                }
-                else {
-                    return ((requestsRow[])(base.GetChildRows(this.Table.ChildRelations["usersrequests"])));
                 }
             }
             

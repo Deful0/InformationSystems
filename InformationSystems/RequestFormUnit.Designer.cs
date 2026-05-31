@@ -38,8 +38,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.requestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,6 +120,10 @@
             // 
             this.requestBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.Request);
             // 
+            // bookBindingSource
+            // 
+            this.bookBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.Book);
+            // 
             // requestBindingSource1
             // 
             this.requestBindingSource1.DataSource = typeof(InformationSystems.NHibernate.Entites.Request);
@@ -138,6 +144,7 @@
             this.Name = "RequestFormUnit";
             this.Text = "RequestFormUnit";
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -156,5 +163,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.BindingSource requestBindingSource;
         private System.Windows.Forms.BindingSource requestBindingSource1;
+        private System.Windows.Forms.BindingSource bookBindingSource;
     }
 }

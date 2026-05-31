@@ -285,6 +285,7 @@
       <DependentUpon>DBDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\InformationSystems.NHibernate.Entites.Book.datasource" />
     <None Include="Properties\DataSources\InformationSystems.NHibernate.Entites.Request.datasource" />
     <None Include="Properties\DataSources\InformationSystems.NHibernate.Entites.RetroBook.datasource" />
     <None Include="Properties\DataSources\InformationSystems.NHibernate.Entites.User.datasource" />

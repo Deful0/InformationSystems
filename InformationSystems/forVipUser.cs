@@ -108,23 +108,27 @@ namespace InformationSystems
 
             if (user_selection_dialog.ShowDialog() == DialogResult.OK)
             {
-                
                 VipUser vip_user = new VipUser();
-                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit();
+
+                // Устанавливаем все поля
                 vip_user.user_id = user_selection_dialog.seceted_user;
+                vip_user.vip_user_name = vip_user.user_id.user_name;
+                vip_user.vip_user_date_start = DateTime.Now;
                 vip_user.requests = new List<Request>();
+
+                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit();
                 vip_users_form_unit.SetDataSource(vip_user);
+
                 if (vip_users_form_unit.ShowDialog() == DialogResult.OK)
                 {
-                    // Сохранение изменений
-                    nhibernate_session.Merge(vip_user);
-                    // Внесение в базу
-                    nhibernate_session.Flush();
-
-                    // Обновление данных
+                    using (var transaction = nhibernate_session.BeginTransaction())
+                    {
+                        nhibernate_session.SaveOrUpdate(vip_user);
+                        nhibernate_session.Flush();
+                        transaction.Commit();
+                    }
                     UpdateVipUserGrid();
                 }
-                
             }
         }
 
