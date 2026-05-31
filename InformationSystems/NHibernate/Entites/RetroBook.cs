@@ -8,8 +8,8 @@ namespace InformationSystems.NHibernate.Entites
 {
     public class RetroBook: Book
     {
-        //public virtual int retro_book_id { get; set; }
-        //public virtual int book_id { get; set; }
+        public virtual int retro_book_id { get; set; }
+        public virtual Book book { get; set; } // Ссылка на обычную книгу
         public virtual string retro_book_name { get; set; }
         public virtual int retro_book_price { get; set; }
 

@@ -69,8 +69,18 @@ namespace InformationSystems
 
             if (request_form_unit.ShowDialog() == DialogResult.OK)
             {
+                // Получаем готовый запрос
                 Request createdRequest = request_form_unit.GetUpdatedRequest();
-                this.requestBindingSource.Add(createdRequest);
+
+                // Получаем текущего VipUser из основного BindingSource
+                VipUser currentVipUser = (VipUser)this.vipUserBindingSource.Current;
+
+                // Устанавливаем связь между запросом и VIP-пользователем
+                createdRequest.vip_user = currentVipUser;
+
+                // Добавляем запрос в коллекцию и обновляем BindingSource
+                currentVipUser.requests.Add(createdRequest);
+                this.requestBindingSource.ResetBindings(false);
             }
         }
     }

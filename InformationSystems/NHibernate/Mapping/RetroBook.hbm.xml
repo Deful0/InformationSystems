@@ -18,16 +18,13 @@ property name - имя свойства класса, на которое ото
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="InformationSystems"
                    namespace="InformationSystems.NHibernate.Entites">
-	<joined-subclass name="RetroBook" extends="Book" table="retro_books">
-		<key column="book_id"/>
-		<!-- Связь Book.book_id -> RetroBook.book_id -->
-		<!--
-		<id name="retro_book_id">
+	<class name="RetroBook" table="retro_books">
+		<id name="retro_book_id" column="retro_book_id">
 			<generator class="native"/>
 		</id>
-		-->
+		<many-to-one name="book" column="book_id" not-null="false"/>
 		<property name="retro_book_name"/>
 		<property name="retro_book_price"/>
-	</joined-subclass>
+	</class>
 </hibernate-mapping>
 

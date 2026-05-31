@@ -32,10 +32,17 @@ namespace InformationSystems
         {
             try
             {
-                books = nhibernate_session.QueryOver<Book>().List<Book>();
-                comboBoxBook.DataSource = books;
-                comboBoxBook.DisplayMember = "book_name";
-                comboBoxBook.ValueMember = "book_id";
+                if (nhibernate_session != null)
+                {
+                    // Загружаем ТОЛЬКО обычные книги, исключая ретро-книги
+                    // Используем HQL для явного указания типа
+                    books = nhibernate_session.CreateQuery("from Book b where b.book_exist = true")
+                        .List<Book>();
+
+                    comboBoxBook.DataSource = books;
+                    comboBoxBook.DisplayMember = "book_name";
+                    comboBoxBook.ValueMember = "book_id";
+                }
             }
             catch (Exception ex)
             {
