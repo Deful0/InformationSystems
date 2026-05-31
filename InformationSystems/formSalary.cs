@@ -140,40 +140,25 @@ namespace InformationSystems
         {
             state = State.Create;
             HideSalarysList();
-        }
+        } 
 
         private void salarysBindingSource_AddingNew(object sender, AddingNewEventArgs e)
         {
             // Автоматическая подстановка Работника в Таблицу
             // Создаем новый объект DataRowView
-            try
+            // Получаем ID текущего выбранного сотрудника
+            int currentWorkerId = GetCurrentWorkerID();
+            if (currentWorkerId == -1)
             {
-                // Получаем ID текущего работника
-                int currentWorkerId = GetCurrentWorkerID();
-                if (currentWorkerId <= 0)
-                {
-                    MessageBox.Show("Не выбран сотрудник! Пожалуйста, выберите сотрудника перед добавлением зарплаты.",
-                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    // Отменяем добавление, не устанавливая e.NewObject
-                    return;
-                }
-
-                // Создаем новую строку в DataTable
-                DataTable salarysTable = this.dBDataSet.salarys;
-                DataRow newRow = salarysTable.NewRow();
-                newRow["worker_id"] = currentWorkerId;
-                newRow["salary_amount"] = 0; // Значение по умолчанию
-                newRow["date_pay"] = DateTime.Now; // Текущая дата по умолчанию
-
-                // Устанавливаем созданную строку как новый объект
-                e.NewObject = newRow;
+                MessageBox.Show("Сначала выберите сотрудника в списке выше.", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при создании записи зарплаты: {ex.Message}", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Не устанавливаем e.NewObject - добавление не произойдет
-            }
+
+            // Получаем новую строку из источника данных
+            DataRowView newRow = (DataRowView)this.salarysBindingSource.AddNew();
+            // Устанавливаем worker_id
+            newRow["worker_id"] = currentWorkerId;
         }
 
         private void bindingNavigatorAddNewItem1_Click(object sender, EventArgs e)
