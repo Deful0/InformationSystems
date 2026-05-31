@@ -110,6 +110,9 @@ namespace InformationSystems
         // Получить ID активного работника
         int GetCurrentWorkerID()
         {
+            if (this.workersBindingSource1.Current == null)
+                return -1;
+
             var row = ((DataRowView)this.workersBindingSource1.Current).Row;
             var col = this.dBDataSet.workers.Columns["worker_id"];
             return Convert.ToInt32(row[col]);
@@ -163,32 +166,21 @@ namespace InformationSystems
 
         private void bindingNavigatorAddNewItem1_Click(object sender, EventArgs e)
         {
-            try
+            int currentWorkerId = GetCurrentWorkerID();
+            if (currentWorkerId == -1)
             {
-                // Проверяем, выбран ли сотрудник
-                int currentWorkerId = GetCurrentWorkerID();
-                if (currentWorkerId <= 0)
-                {
-                    MessageBox.Show("Пожалуйста, сначала выберите сотрудника в списке выше!",
-                        "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Отображение формы редактирования
-                SalaryFormUnit vfu = new SalaryFormUnit();
-                vfu.CreateItem(currentWorkerId);
-
-                // Если пользователь нажал "Сохранить"
-                if (vfu.ShowDialog() == DialogResult.OK)
-                {
-                    // Обновить данные таблицы
-                    workersBindingSource1_CurrentChanged(null, null);
-                }
+                MessageBox.Show("Пожалуйста, сначала выберите сотрудника.", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
+
+            SalaryFormUnit vfu = new SalaryFormUnit();
+            vfu.CreateItem(currentWorkerId);
+
+            if (vfu.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.salarysTableAdapter.Update(this.dBDataSet.salarys);
+                workersBindingSource1_CurrentChanged(null, null);
             }
         }
 

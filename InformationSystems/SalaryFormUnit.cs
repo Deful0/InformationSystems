@@ -21,23 +21,22 @@ namespace InformationSystems
         {
             try
             {
-                // Создание новой строки в DataTable
-                DataTable salarysTable = this.dBDataSet.salarys;
-                DataRow newRow = salarysTable.NewRow();
+                // Создаем новую строку напрямую в DataTable
+                DataRow newRow = this.dBDataSet.salarys.NewRow();
                 newRow["worker_id"] = WorkerID;
                 newRow["salary_amount"] = 0;
                 newRow["date_pay"] = DateTime.Now;
 
-                // Добавление строки в таблицу
-                salarysTable.Rows.Add(newRow);
+                // Добавляем в таблицу
+                this.dBDataSet.salarys.Rows.Add(newRow);
 
-                // Устанавливаем позицию на новую строку
+                // Обновляем BindingSource
+                this.SalarysBindingSource.DataSource = this.dBDataSet.salarys;
                 this.SalarysBindingSource.Position = this.SalarysBindingSource.Count - 1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка создания записи: {ex.Message}", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
 
