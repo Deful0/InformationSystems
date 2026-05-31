@@ -140,7 +140,7 @@ namespace InformationSystems
         {
             state = State.Create;
             HideSalarysList();
-        }
+        } 
 
         private void salarysBindingSource_AddingNew(object sender, AddingNewEventArgs e)
         {
