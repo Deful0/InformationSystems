@@ -15,18 +15,17 @@ property name - имя свойства класса, на которое ото
 	нужно отображение на поле с другим именем, используйте
 	атрибут column.
 -->
-<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="InformationSystems"
                    namespace="InformationSystems.NHibernate.Entites">
 	<class name="Request" table="requests">
-		<id name="request_id">
-			<generator class="native"/>
+		<id name="request_id" column="request_id">
+			<generator class="assigned" />
 		</id>
 		<property name="book_id"/>
 		<property name="request_date"/>
 
-		<!-- Связь с VipUser (многие к одному) -->
+		<!-- Связь с VipUser -->
 		<many-to-one name="vip_user" column="vip_user_id" not-null="false"/>
 	</class>
 </hibernate-mapping>
