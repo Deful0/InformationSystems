@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VipUserFormUnit));
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.vipUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,10 +39,15 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.requestidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -55,19 +61,14 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.requestidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requestdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requestBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vipUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vip_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.vipUserBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vipUserBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -79,6 +80,10 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 18;
+            // 
+            // vipUserBindingSource
+            // 
+            this.vipUserBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.VipUser);
             // 
             // label5
             // 
@@ -143,6 +148,10 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 19;
             // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.User);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -179,13 +188,36 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.requestidDataGridViewTextBoxColumn,
             this.bookidDataGridViewTextBoxColumn,
-            this.requestdateDataGridViewTextBoxColumn});
+            this.requestdateDataGridViewTextBoxColumn,
+            this.vip_user});
             this.dataGridView1.DataSource = this.requestBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(646, 223);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // requestidDataGridViewTextBoxColumn
+            // 
+            this.requestidDataGridViewTextBoxColumn.DataPropertyName = "request_id";
+            this.requestidDataGridViewTextBoxColumn.HeaderText = "request_id";
+            this.requestidDataGridViewTextBoxColumn.Name = "requestidDataGridViewTextBoxColumn";
+            // 
+            // bookidDataGridViewTextBoxColumn
+            // 
+            this.bookidDataGridViewTextBoxColumn.DataPropertyName = "book_id";
+            this.bookidDataGridViewTextBoxColumn.HeaderText = "book_id";
+            this.bookidDataGridViewTextBoxColumn.Name = "bookidDataGridViewTextBoxColumn";
+            // 
+            // requestdateDataGridViewTextBoxColumn
+            // 
+            this.requestdateDataGridViewTextBoxColumn.DataPropertyName = "request_date";
+            this.requestdateDataGridViewTextBoxColumn.HeaderText = "request_date";
+            this.requestdateDataGridViewTextBoxColumn.Name = "requestdateDataGridViewTextBoxColumn";
+            // 
+            // requestBindingSource
+            // 
+            this.requestBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.Request);
             // 
             // bindingNavigator1
             // 
@@ -314,35 +346,11 @@
             this.toolStripButton1.Text = "Создание запроса";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // requestidDataGridViewTextBoxColumn
+            // vip_user
             // 
-            this.requestidDataGridViewTextBoxColumn.DataPropertyName = "request_id";
-            this.requestidDataGridViewTextBoxColumn.HeaderText = "request_id";
-            this.requestidDataGridViewTextBoxColumn.Name = "requestidDataGridViewTextBoxColumn";
-            // 
-            // bookidDataGridViewTextBoxColumn
-            // 
-            this.bookidDataGridViewTextBoxColumn.DataPropertyName = "book_id";
-            this.bookidDataGridViewTextBoxColumn.HeaderText = "book_id";
-            this.bookidDataGridViewTextBoxColumn.Name = "bookidDataGridViewTextBoxColumn";
-            // 
-            // requestdateDataGridViewTextBoxColumn
-            // 
-            this.requestdateDataGridViewTextBoxColumn.DataPropertyName = "request_date";
-            this.requestdateDataGridViewTextBoxColumn.HeaderText = "request_date";
-            this.requestdateDataGridViewTextBoxColumn.Name = "requestdateDataGridViewTextBoxColumn";
-            // 
-            // requestBindingSource
-            // 
-            this.requestBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.Request);
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.User);
-            // 
-            // vipUserBindingSource
-            // 
-            this.vipUserBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.VipUser);
+            this.vip_user.DataPropertyName = "vip_user";
+            this.vip_user.HeaderText = "vip_user";
+            this.vip_user.Name = "vip_user";
             // 
             // VipUserFormUnit
             // 
@@ -363,15 +371,15 @@
             this.Name = "VipUserFormUnit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VipUserFormUnit";
+            ((System.ComponentModel.ISupportInitialize)(this.vipUserBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vipUserBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,5 +418,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn requestdateDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource requestBindingSource;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vip_user;
     }
 }

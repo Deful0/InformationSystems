@@ -18,7 +18,6 @@ namespace InformationSystems
     {
         ISession nhibernate_session;
         IList<VipUser> vip_users;
-        public ISession NhibernateSession => nhibernate_session;
 
         public forVipUser()
         {
@@ -76,29 +75,18 @@ namespace InformationSystems
 
         private void tsb_change_Click(object sender, EventArgs e)
         {
-            try
+            VipUser vip_user = MyUtilitis.Clone<VipUser>((VipUser)this.vipUserBindingSource.Current);
+            VipUserFormUnit vip_users_form_unit = new VipUserFormUnit();
+            vip_users_form_unit.SetDataSource(vip_user);
+            if (vip_users_form_unit.ShowDialog() == DialogResult.OK)
             {
-                VipUser vip_user = MyUtilitis.Clone<VipUser>((VipUser)this.vipUserBindingSource.Current);
-                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit(nhibernate_session);
-                vip_users_form_unit.SetDataSource(vip_user);
+                // Сохранение изменений
+                nhibernate_session.Merge(vip_user);
+                // Внесение в базу
+                nhibernate_session.Flush();
 
-                if (vip_users_form_unit.ShowDialog() == DialogResult.OK)
-                {
-                    using (var transaction = nhibernate_session.BeginTransaction())
-                    {
-                        // Сохраняем VipUser (каскадно сохранятся и Request)
-                        nhibernate_session.Merge(vip_user);
-                        nhibernate_session.Flush();
-                        transaction.Commit();
-                    }
-
-                    UpdateVipUserGrid();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Обновление данных
+                UpdateVipUserGrid();
             }
         }
 
@@ -109,27 +97,23 @@ namespace InformationSystems
 
             if (user_selection_dialog.ShowDialog() == DialogResult.OK)
             {
+
                 VipUser vip_user = new VipUser();
-
-                // Устанавливаем все поля
+                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit();
                 vip_user.user_id = user_selection_dialog.seceted_user;
-                vip_user.vip_user_name = vip_user.user_id.user_name;
-                vip_user.vip_user_date_start = DateTime.Now;
                 vip_user.requests = new List<Request>();
-
-                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit(nhibernate_session);
                 vip_users_form_unit.SetDataSource(vip_user);
-
                 if (vip_users_form_unit.ShowDialog() == DialogResult.OK)
                 {
-                    using (var transaction = nhibernate_session.BeginTransaction())
-                    {
-                        nhibernate_session.SaveOrUpdate(vip_user);
-                        nhibernate_session.Flush();
-                        transaction.Commit();
-                    }
+                    // Сохранение изменений
+                    nhibernate_session.Merge(vip_user);
+                    // Внесение в базу
+                    nhibernate_session.Flush();
+
+                    // Обновление данных
                     UpdateVipUserGrid();
                 }
+
             }
         }
 
