@@ -35,14 +35,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.requestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBoxBook = new System.Windows.Forms.ComboBox();
+            this.bookBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -100,13 +102,9 @@
             this.textBox1.Size = new System.Drawing.Size(200, 20);
             this.textBox1.TabIndex = 5;
             // 
-            // textBox2
+            // requestBindingSource
             // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestBindingSource, "book_id", true));
-            this.textBox2.Location = new System.Drawing.Point(161, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 6;
+            this.requestBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.Request);
             // 
             // dateTimePicker1
             // 
@@ -116,10 +114,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 7;
             // 
-            // requestBindingSource
-            // 
-            this.requestBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.Request);
-            // 
             // bookBindingSource
             // 
             this.bookBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.Book);
@@ -128,13 +122,28 @@
             // 
             this.requestBindingSource1.DataSource = typeof(InformationSystems.NHibernate.Entites.Request);
             // 
+            // comboBoxBook
+            // 
+            this.comboBoxBook.DataSource = this.bookBindingSource;
+            this.comboBoxBook.DisplayMember = "book_name";
+            this.comboBoxBook.FormattingEnabled = true;
+            this.comboBoxBook.Location = new System.Drawing.Point(161, 96);
+            this.comboBoxBook.Name = "comboBoxBook";
+            this.comboBoxBook.Size = new System.Drawing.Size(200, 21);
+            this.comboBoxBook.TabIndex = 8;
+            this.comboBoxBook.ValueMember = "book_id";
+            // 
+            // bookBindingSource1
+            // 
+            this.bookBindingSource1.DataSource = typeof(InformationSystems.NHibernate.Entites.Book);
+            // 
             // RequestFormUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 450);
+            this.Controls.Add(this.comboBoxBook);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -146,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,10 +169,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.BindingSource requestBindingSource;
         private System.Windows.Forms.BindingSource requestBindingSource1;
         private System.Windows.Forms.BindingSource bookBindingSource;
+        private System.Windows.Forms.ComboBox comboBoxBook;
+        private System.Windows.Forms.BindingSource bookBindingSource1;
     }
 }

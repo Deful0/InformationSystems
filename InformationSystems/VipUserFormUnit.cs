@@ -1,5 +1,4 @@
-﻿using InformationSystems.NHibernate.Entites;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,15 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 using InformationSystems.NHibernate.Entites;
 
 namespace InformationSystems
 {
     public partial class VipUserFormUnit : Form
     {
-        public VipUserFormUnit()
+        private ISession nhibernate_session;
+
+        // Конструктор с сессией
+        public VipUserFormUnit(ISession session)
         {
             InitializeComponent();
+            nhibernate_session = session;
         }
 
         public void SetDataSource(VipUser vip_user)
@@ -29,25 +35,42 @@ namespace InformationSystems
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             // Редактирование запросов
-            RequestFormUnit request_form_unit = new RequestFormUnit();
+            RequestFormUnit request_form_unit = new RequestFormUnit(nhibernate_session);
             Request request = MyUtilitis.Clone<Request>((Request)this.requestBindingSource.Current);
-            //Request request = (Request)this.requestBindingSource.Current;
+
+            // Если новая запись или нет текущего запроса, создаем новый объект
+            if (request == null || request.request_id == 0)
+            {
+                request = new Request();
+                request.request_date = DateTime.Now;
+            }
+
             request_form_unit.SetDataSource(request);
+
             if (request_form_unit.ShowDialog() == DialogResult.OK)
             {
-                this.requestBindingSource[this.requestBindingSource.Position] = request;
+                Request updatedRequest = request_form_unit.GetUpdatedRequest();
+
+                // Обновляем BindingSource
+                int currentPosition = this.requestBindingSource.Position;
+                this.requestBindingSource[currentPosition] = updatedRequest;
+                this.requestBindingSource.ResetCurrentItem();
             }
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            // Редактирование запросов
-            RequestFormUnit request_form_unit = new RequestFormUnit();
-            Request request = (Request)this.requestBindingSource.Current;
-            request_form_unit.SetDataSource(request);
+            // Создание нового запроса
+            RequestFormUnit request_form_unit = new RequestFormUnit(nhibernate_session);
+            Request newRequest = new Request();
+            newRequest.request_date = DateTime.Now;
+
+            request_form_unit.SetDataSource(newRequest);
+
             if (request_form_unit.ShowDialog() == DialogResult.OK)
             {
-                this.requestBindingSource[this.requestBindingSource.Position] = request;
+                Request createdRequest = request_form_unit.GetUpdatedRequest();
+                this.requestBindingSource.Add(createdRequest);
             }
         }
     }

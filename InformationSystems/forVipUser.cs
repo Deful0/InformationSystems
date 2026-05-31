@@ -18,6 +18,7 @@ namespace InformationSystems
     {
         ISession nhibernate_session;
         IList<VipUser> vip_users;
+        public ISession NhibernateSession => nhibernate_session;
 
         public forVipUser()
         {
@@ -78,7 +79,7 @@ namespace InformationSystems
             try
             {
                 VipUser vip_user = MyUtilitis.Clone<VipUser>((VipUser)this.vipUserBindingSource.Current);
-                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit();
+                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit(nhibernate_session);
                 vip_users_form_unit.SetDataSource(vip_user);
 
                 if (vip_users_form_unit.ShowDialog() == DialogResult.OK)
@@ -116,7 +117,7 @@ namespace InformationSystems
                 vip_user.vip_user_date_start = DateTime.Now;
                 vip_user.requests = new List<Request>();
 
-                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit();
+                VipUserFormUnit vip_users_form_unit = new VipUserFormUnit(nhibernate_session);
                 vip_users_form_unit.SetDataSource(vip_user);
 
                 if (vip_users_form_unit.ShowDialog() == DialogResult.OK)
