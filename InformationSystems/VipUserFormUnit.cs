@@ -61,7 +61,7 @@ namespace InformationSystems
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             // Создание нового запроса
-            RequestFormUnit request_form_unit = new RequestFormUnit(nhibernate_session);
+            RequestFormUnit request_form_unit = new RequestFormUnit();
             Request newRequest = new Request();
             newRequest.request_date = DateTime.Now;
 

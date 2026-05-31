@@ -37,14 +37,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.requestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxBook = new System.Windows.Forms.ComboBox();
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.requestBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBoxBook = new System.Windows.Forms.ComboBox();
-            this.bookBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -114,6 +112,17 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 7;
             // 
+            // comboBoxBook
+            // 
+            this.comboBoxBook.DataSource = this.bookBindingSource;
+            this.comboBoxBook.DisplayMember = "book_name";
+            this.comboBoxBook.FormattingEnabled = true;
+            this.comboBoxBook.Location = new System.Drawing.Point(161, 96);
+            this.comboBoxBook.Name = "comboBoxBook";
+            this.comboBoxBook.Size = new System.Drawing.Size(200, 21);
+            this.comboBoxBook.TabIndex = 8;
+            this.comboBoxBook.ValueMember = "book_id";
+            // 
             // bookBindingSource
             // 
             this.bookBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.Book);
@@ -121,18 +130,6 @@
             // requestBindingSource1
             // 
             this.requestBindingSource1.DataSource = typeof(InformationSystems.NHibernate.Entites.Request);
-            // 
-            // comboBoxBook
-            // 
-            this.comboBoxBook.FormattingEnabled = true;
-            this.comboBoxBook.Location = new System.Drawing.Point(161, 96);
-            this.comboBoxBook.Name = "comboBoxBook";
-            this.comboBoxBook.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxBook.TabIndex = 8;
-            // 
-            // bookBindingSource1
-            // 
-            this.bookBindingSource1.DataSource = typeof(InformationSystems.NHibernate.Entites.Book);
             // 
             // RequestFormUnit
             // 
@@ -152,7 +149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,6 +167,5 @@
         private System.Windows.Forms.BindingSource requestBindingSource1;
         private System.Windows.Forms.BindingSource bookBindingSource;
         private System.Windows.Forms.ComboBox comboBoxBook;
-        private System.Windows.Forms.BindingSource bookBindingSource1;
     }
 }

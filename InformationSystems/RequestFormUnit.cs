@@ -22,35 +22,31 @@ namespace InformationSystems
         public RequestFormUnit()
         {
             InitializeComponent();
+            
         }
 
         public RequestFormUnit(ISession session)
         {
             InitializeComponent();
             nhibernate_session = session;  // Сохраняем сессию
-            LoadBooks();                   // Загружаем книги
+                              // Загружаем книги
         }
 
 
         // Загрузка списка книг
         private void LoadBooks()
         {
-            try
+            
+            if (nhibernate_session != null)
             {
-                if (nhibernate_session != null)
-                {
-                    books = nhibernate_session.QueryOver<Book>().List<Book>();
+                books = nhibernate_session.QueryOver<Book>().List<Book>();
 
-                    comboBoxBook.DataSource = books;
-                    comboBoxBook.DisplayMember = "book_name";
-                    comboBoxBook.ValueMember = "book_id";
-                    comboBoxBook.DropDownStyle = ComboBoxStyle.DropDownList;
-                }
+                comboBoxBook.DataSource = books;
+                comboBoxBook.DisplayMember = "book_name";
+                comboBoxBook.ValueMember = "book_id";
+                comboBoxBook.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка загрузки книг: {ex.Message}");
-            }
+            
         }
 
         public void SetDataSource(Request request)
@@ -83,17 +79,12 @@ namespace InformationSystems
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.Validate();
-                this.requestBindingSource.EndEdit();
-                DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}");
-            }
+           
+            this.Validate();
+            this.requestBindingSource.EndEdit();
+            DialogResult = DialogResult.OK;
+            this.Close();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
