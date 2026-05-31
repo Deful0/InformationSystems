@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,9 +36,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.retroBookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -48,18 +46,8 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.retroBookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.retroBookBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ID ретро книги";
             // 
             // label2
             // 
@@ -124,15 +112,6 @@
             this.label8.TabIndex = 7;
             this.label8.Text = "Наличие";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(35, 278);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Название";
-            // 
             // textBox2
             // 
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.retroBookBindingSource, "book_id", true));
@@ -141,13 +120,9 @@
             this.textBox2.Size = new System.Drawing.Size(145, 20);
             this.textBox2.TabIndex = 10;
             // 
-            // textBox3
+            // retroBookBindingSource
             // 
-            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.retroBookBindingSource, "retro_book_name", true));
-            this.textBox3.Location = new System.Drawing.Point(174, 275);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(145, 20);
-            this.textBox3.TabIndex = 11;
+            this.retroBookBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.RetroBook);
             // 
             // textBox4
             // 
@@ -217,10 +192,6 @@
             this.button2.Text = "Cancle";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // retroBookBindingSource
-            // 
-            this.retroBookBindingSource.DataSource = typeof(InformationSystems.NHibernate.Entites.RetroBook);
-            // 
             // RetroBookFormUnit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,9 +205,7 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -244,7 +213,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "RetroBookFormUnit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RetroBookFormUnit";
@@ -255,8 +223,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -264,9 +230,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;

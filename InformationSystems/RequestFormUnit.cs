@@ -19,11 +19,16 @@ namespace InformationSystems
         private IList<Book> books; // Список книг для выпадающего списка
         private ISession nhibernate_session; // Сессия NHibernate
 
+        public RequestFormUnit()
+        {
+            InitializeComponent();
+        }
+
         public RequestFormUnit(ISession session)
         {
             InitializeComponent();
-            nhibernate_session = session;
-            LoadBooks();
+            nhibernate_session = session;  // Сохраняем сессию
+            LoadBooks();                   // Загружаем книги
         }
 
 
@@ -34,21 +39,7 @@ namespace InformationSystems
             {
                 if (nhibernate_session != null)
                 {
-                    // ✅ SQL запрос, который работает независимо от joined-subclass
-                    string sql = @"
-                SELECT 
-                    book_id, 
-                    book_name, 
-                    book_author, 
-                    book_date, 
-                    book_count_list, 
-                    book_exist 
-                FROM books 
-                WHERE book_exist = true";
-
-                    books = nhibernate_session.CreateSQLQuery(sql)
-                        .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean<Book>())
-                        .List<Book>();
+                    books = nhibernate_session.QueryOver<Book>().List<Book>();
 
                     comboBoxBook.DataSource = books;
                     comboBoxBook.DisplayMember = "book_name";
@@ -66,15 +57,18 @@ namespace InformationSystems
         {
             this.requestBindingSource.DataSource = request;
 
-            // Привязываем SelectedValue к book_id
-            if (comboBoxBook.DataBindings.Count == 0)
-            {
-                comboBoxBook.DataBindings.Add("SelectedValue", requestBindingSource, "book_id", true, DataSourceUpdateMode.OnPropertyChanged);
-            }
+            // Очищаем старые привязки, чтобы избежать дублирования
+            comboBoxBook.DataBindings.Clear();
+            comboBoxBook.DataBindings.Add("SelectedValue", requestBindingSource, "book_id", true, DataSourceUpdateMode.OnPropertyChanged);
 
             if (request.request_id == 0)
             {
                 textBox1.Text = "(Новый)";
+                textBox1.Enabled = false;
+            }
+            else
+            {
+                textBox1.Text = request.request_id.ToString();
                 textBox1.Enabled = false;
             }
         }
@@ -82,22 +76,17 @@ namespace InformationSystems
         // Возвращаем обновленный объект Request
         public Request GetUpdatedRequest()
         {
-            Request request = (Request)this.requestBindingSource.Current;
-            if (comboBoxBook.SelectedValue != null)
-            {
-                request.book_id = (int)comboBoxBook.SelectedValue;
-            }
-            return request;
+            this.Validate();
+            this.requestBindingSource.EndEdit();
+            return (Request)this.requestBindingSource.Current;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                // Завершаем редактирование
                 this.Validate();
                 this.requestBindingSource.EndEdit();
-
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
