@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD1EF486-9230-404E-AB4E-1CF064F1116B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>InformationSystems</RootNamespace>
+    <AssemblyName>InformationSystems</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.1.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.1.1\lib\net462\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.9.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.10\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=5.6.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.6.1\lib\net461\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.JetDriver, Version=2.0.0.1002, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.JetDriver.2.0.0.1002\lib\net40\NHibernate.JetDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq.EagerFetching, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.EagerFetching.2.2.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Text.Json, Version=10.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBDataSet.cs">
+      <DependentUpon>DBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddRentBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddRentBook.Designer.cs">
+      <DependentUpon>FormAddRentBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddWorkers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddWorkers.Designer.cs">
+      <DependentUpon>FormAddWorkers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formBooks.Designer.cs">
+      <DependentUpon>formBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditRentBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditRentBook.Designer.cs">
+      <DependentUpon>FormEditRentBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditWorkers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditWorkers.Designer.cs">
+      <DependentUpon>FormEditWorkers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formFins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formFins.Designer.cs">
+      <DependentUpon>formFins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formRentBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formRentBook.Designer.cs">
+      <DependentUpon>formRentBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSalary.Designer.cs">
+      <DependentUpon>formSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUser.Designer.cs">
+      <DependentUpon>formUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formWorkers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formWorkers.Designer.cs">
+      <DependentUpon>formWorkers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forVipUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forVipUser.Designer.cs">
+      <DependentUpon>forVipUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUtilitis.cs" />
+    <Compile Include="NHibernate\Entites\Book.cs" />
+    <Compile Include="NHibernate\Entites\Request.cs" />
+    <Compile Include="NHibernate\Entites\RetroBook.cs" />
+    <Compile Include="RetroBookFormUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RetroBookFormUnit.Designer.cs">
+      <DependentUpon>RetroBookFormUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RetroBookListUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RetroBookListUnit.Designer.cs">
+      <DependentUpon>RetroBookListUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NHibernate\Entites\User.cs" />
+    <Compile Include="NHibernate\Entites\VipUser.cs" />
+    <Compile Include="RequestFormUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestFormUnit.Designer.cs">
+      <DependentUpon>RequestFormUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSelectionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserSelectionDialog.Designer.cs">
+      <DependentUpon>UserSelectionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VipUserFormUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VipUserFormUnit.Designer.cs">
+      <DependentUpon>VipUserFormUnit.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RetroBookFormUnit.resx">
+      <DependentUpon>RetroBookFormUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RetroBookListUnit.resx">
+      <DependentUpon>RetroBookListUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NHibernate\Mapping\VipUser.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalaryFormUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalaryFormUnit.Designer.cs">
+      <DependentUpon>SalaryFormUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserFormUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserFormUnit.Designer.cs">
+      <DependentUpon>UserFormUnit.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddRentBook.resx">
+      <DependentUpon>FormAddRentBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddWorkers.resx">
+      <DependentUpon>FormAddWorkers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formBooks.resx">
+      <DependentUpon>formBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditRentBook.resx">
+      <DependentUpon>FormEditRentBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditWorkers.resx">
+      <DependentUpon>FormEditWorkers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formFins.resx">
+      <DependentUpon>formFins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formRentBook.resx">
+      <DependentUpon>formRentBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSalary.resx">
+      <DependentUpon>formSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUser.resx">
+      <DependentUpon>formUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formWorkers.resx">
+      <DependentUpon>formWorkers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forVipUser.resx">
+      <DependentUpon>forVipUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RequestFormUnit.resx">
+      <DependentUpon>RequestFormUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalaryFormUnit.resx">
+      <DependentUpon>SalaryFormUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserFormUnit.resx">
+      <DependentUpon>UserFormUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserSelectionDialog.resx">
+      <DependentUpon>UserSelectionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VipUserFormUnit.resx">
+      <DependentUpon>VipUserFormUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DBDataSet.xsc">
+      <DependentUpon>DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBDataSet.xss">
+      <DependentUpon>DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\InformationSystems.NHibernate.Entites.Request.datasource" />
+    <None Include="Properties\DataSources\InformationSystems.NHibernate.Entites.RetroBook.datasource" />
+    <None Include="Properties\DataSources\InformationSystems.NHibernate.Entites.User.datasource" />
+    <None Include="Properties\DataSources\InformationSystems.NHibernate.Entites.VipUser.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mapping\User.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mapping\Request.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mapping\Book.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Mapping\RetroBook.hbm.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

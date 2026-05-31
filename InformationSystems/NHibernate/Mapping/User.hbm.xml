@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+hibernate-mapping
+	assembly - название сборки
+	namespace - пространство имён приложения
+	по умолчанию assembly и namespace совпадают
+	с названием решения Visual Studio.
+class name - имя класса, на который выполняется отображение
+	по умолчанию совпадает с названием таблицы в базе данных.
+	Если нужно отображение на таблицу с другим именем, используйте
+	атрибут table.
+property name - имя свойства класса, на которое отображается
+	конкретное поле таблицы базы данных. По умолчанию имя
+	свойства класса совпадает с именем поля таблицы. Если 
+	нужно отображение на поле с другим именем, используйте
+	атрибут column.
+-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="InformationSystems"
+                   namespace="InformationSystems.NHibernate.Entites">
+	<class name="User" table="users">
+		<id name="user_id">
+			<generator class="native"/>
+		</id>
+		<property name="user_name"/>
+		<property name="user_mail"/>
+		<property name="user_phone"/>
+		<property name="user_registration"/>
+	</class>
+</hibernate-mapping>
+

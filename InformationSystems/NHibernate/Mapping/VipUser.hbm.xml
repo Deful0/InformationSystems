@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+hibernate-mapping
+	assembly - название сборки
+	namespace - пространство имён приложения
+	по умолчанию assembly и namespace совпадают
+	с названием решения Visual Studio.
+class name - имя класса, на который выполняется отображение
+	по умолчанию совпадает с названием таблицы в базе данных.
+	Если нужно отображение на таблицу с другим именем, используйте
+	атрибут table.
+property name - имя свойства класса, на которое отображается
+	конкретное поле таблицы базы данных. По умолчанию имя
+	свойства класса совпадает с именем поля таблицы. Если 
+	нужно отображение на поле с другим именем, используйте
+	атрибут column.
+-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="InformationSystems"
+                   namespace="InformationSystems.NHibernate.Entites">
+	<class name="VipUser" table="vip_users">
+		<id name="vip_user_id">
+			<generator class="native"/>
+		</id>
+		<property name="vip_user_name"/>
+		<property name="vip_user_date_start"/>
+		<many-to-one name="user_id" column="user_id" cascade="merge" unique="true"/>
+		<bag name="requests" table="Request" cascade="all-delete-orphan" lazy="true" inverse="false">
+			<key column="user_id" />
+		<one-to-many class="Request" />
+		</bag>
+	</class>
+</hibernate-mapping>
+

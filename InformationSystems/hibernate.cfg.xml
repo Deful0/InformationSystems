@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+	<session-factory>
+		<property name="connection.driver_class">NHibernate.JetDriver.JetDriver, NHibernate.JetDriver</property>
+
+		<property name="dialect">NHibernate.Dialect.MsSqlCeDialect</property>
+
+		<property name="connection.connection_string">
+			Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Example_1.accdb
+		</property>
+
+		<property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+		<property name="show_sql">true</property>
+	</session-factory>
+</hibernate-configuration>
